@@ -2,17 +2,18 @@
 
 # configs
 includeAttrs=true
+entityAnnotation='\@[^\\(]+\\(Entity|MappedSuperclass)'
 # end configs
 
-rm /tmp/tempUml
+rm /tmp/tempUml.puml
 
 if [ -z "$2" ]; then
-    outFile="/tmp/tempUml"
+    outFile="/tmp/tempUml.puml"
 else
     outFile=$2
 fi
 
-entities=$(ls --ignore="*Repository*" $1)
+entities=$(grep --exclude "*~" -RlP $entityAnnotation $1 )
 echo "@startuml" >> $outFile
 echo "" >> $outFile
 
@@ -20,10 +21,10 @@ echo "" >> $outFile
 echo "' Entities follows:" >> $outFile
 
 for i in $entities
-    do echo class ${i/.php/} "{" >> $outFile
+do echo class $(echo ${i/.php/} | xargs -I '{p}' basename '{p}') "{" >> $outFile
     # Adding attributes if enabled by $includeAttrs
     if $includeAttrs ; then
-        attrs=$(awk '/class/,/function\s+\w+\(/' $1/$i  | grep -P "^\s+(private|public|protected)\s+\\$" | grep -oP '\$[^;]*')
+        attrs=$(awk '/class/,/function\s+\w+\(/' $i  | grep -P "^\s+(private|public|protected)\s+\\$" | grep -oP '\$[^\s=;]*')
         for attr in $attrs; 
             do echo "    $attr" >> $outFile 
         done
@@ -39,7 +40,7 @@ for i in $entities
 do
     for relationType in "ManyToMany" "OneToOne" "ManyToOne"
     do
-        relations=$(awk '/class/,/function\s+\w+\(/' $1/$i |  awk "/$relationType/,/\)/" | awk '/targetEntity="/,/"/' | grep -oP 'targetEntity="[^"]+"')
+        relations=$(awk '/class/,/function\s+\w+\(/' $i |  awk "/$relationType/,/\)/" | awk '/targetEntity="/,/"/' | grep -oP 'targetEntity="[^"]+"')
         if [ -n "$relations" ]
         then
             for relation in $relations
@@ -49,15 +50,15 @@ do
                 relatedEntity=$(echo $relatedEntity | grep -Po '\w+(?=\")')
                 if [ "$relationType" == "ManyToOne" ] 
                 then
-                    arrow=' "n" --o "1" '
+                    arrow=' "n" --* "1" '
                 elif [ "$relationType" == "OneToOne" ]
                 then
-                    arrow=' "1" --o "1" '
+                    arrow=' "1" --* "1" '
                 elif [ "$relationType" == "ManyToMany" ]
                 then
                     arrow=' "n" --o "n" '
                 fi
-                echo ${i/.php/} $arrow $relatedEntity >> $outFile
+                echo $(echo ${i/.php/} | xargs -I '{p}' basename '{p}') $arrow $relatedEntity >> $outFile
             done
 
         fi
