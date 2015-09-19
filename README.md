@@ -19,4 +19,4 @@ You will need a JRE
 ```
 prompt $ java -jar /<path-to-downloaded plantuml jar>/plantuml.jar
 ```
-Then, if missing, add puml in the File extensions textbox. Select your target directory with Change Directory button and plantuml will find all puml files in it and will generaete the file.png versions.
+Then, if missing, add puml in the File extensions textbox. Select your target directory with Change Directory button and plantuml will find all puml files in it and will generaete the file.png versions that you can open with any image viewer.
