@@ -5,7 +5,7 @@ it renders de Class Model for you.
 
 Get PlantUml
 ============
-To download planuml visit http://plantuml.com/ and follow instructions.
+To download planuml visit http://plantuml.com/download.html and follow download link.
 
 Run script
 ==========
