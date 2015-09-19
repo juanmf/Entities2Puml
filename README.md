@@ -8,13 +8,15 @@ To download planuml visit http://plantuml.com/ and follow instructions.
 
 Run script
 ==========
+Go to a terminal
 ```
-Entities2Puml.sh /path/to/BundleWithEntitiesDirectory/Entity outFile.puml
+prompt $ Entities2Puml.sh /path/to/BundleWithEntitiesDirectory/Entity outFile.puml
 ```
 
 Process script Output
 =====================
+You will need a JRE 
 ```
-java -jar /<path-to-downloaded plantuml jar>/plantuml.jar
+prompt $ java -jar /<path-to-downloaded plantuml jar>/plantuml.jar
 ```
 Then, if missing, add puml in the File extensions textbox. Select your target directory with Change Directory button and plantuml will find all puml files in it and will generaete the file.png versions.
