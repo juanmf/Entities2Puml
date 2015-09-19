@@ -3,6 +3,7 @@
 # configs
 includeAttrs=true
 entityAnnotation='\@[^\\(]+\\(Entity|MappedSuperclass)'
+scannedFilesPattern="*.php"
 # end configs
 
 rm /tmp/tempUml.puml
@@ -13,7 +14,7 @@ else
     outFile=$2
 fi
 
-entities=$(grep --exclude "*~" -RlP $entityAnnotation $1 )
+entities=$(grep --exclude="*~" --include="$scannedFilesPattern" -RlP $entityAnnotation $1 )
 echo "@startuml" >> $outFile
 echo "" >> $outFile
 
