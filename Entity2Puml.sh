@@ -19,8 +19,9 @@ my_dir="$(dirname "$0")"
 . "$my_dir/config.sh"
 
 entities=$(grep --exclude="*~" --include="$scannedFilesPattern" -RlP $entityAnnotation $1 )
-echo "@startuml" >> $outFile
-echo "" >> $outFile
+echo "@startuml
+hide methods
+                " >> $outFile
 
 # Adding all Entities
 echo "' Entities follows:" >> $outFile

@@ -1,26 +1,7 @@
 #!/bin/bash
 ##
-# configs
+# Global configs
 ##
-##
-# Whether or not to include Class' attributes in diagram
-##
-includeAttrs=true
-
-##
-# The regex that is used by `grep -P` to identify Entity classes
-##
-entityAnnotation='\@[^\\(]+\\(Entity|MappedSuperclass)'
-
-##
-# Filename pattern to include in search its used by `grep --include=PATTERN`.
-##
-scannedFilesPattern="*.php"
-
-##
-# Filename extension to strip from filename, used for classname assumption.
-##
-scannedFilesExtension=".php"
 
 ##
 # The defaul output filename in case second argument is not given
@@ -28,22 +9,20 @@ scannedFilesExtension=".php"
 defaultOutFile="/tmp/tempUml.puml"
 
 ##
-# The defaul output filename in case second argument is not given
+# end Global configs
 ##
-dbUser="root"
 
 ##
-# The defaul output filename in case second argument is not given
+# Including configs
 ##
-usePw="-p "
+
+my_dir="$(dirname "$0")"
+. "$my_dir/config_doctrine.sh"
+. "$my_dir/config_mysql.sh"
 
 ##
-# The defaul output filename in case second argument is not given
+# end Including configs
 ##
-dbHost="localhost"
-
-# end configs
-
 
 rm $defaultOutFile
 
