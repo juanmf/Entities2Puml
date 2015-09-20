@@ -14,43 +14,9 @@
 # $0 projectRoot/src [outputFile.puml]
 ##
 
-##
-# configs
-##
-##
-# Whether or not to include Class' attributes in diagram
-##
-includeAttrs=true
-
-##
-# The regex that is used by `grep -P` to identify Entity classes
-##
-entityAnnotation='\@[^\\(]+\\(Entity|MappedSuperclass)'
-
-##
-# Filename pattern to include in search its used by `grep --include=PATTERN`.
-##
-scannedFilesPattern="*.php"
-
-##
-# Filename extension to strip from filename, used for classname assumption.
-##
-scannedFilesExtension=".php"
-
-##
-# The defaul output filename in case second argument is not given
-##
-defaultOutFile="/tmp/tempUml.puml"
-
-# end configs
-
-rm $defaultOutFile
-
-if [ -z "$2" ]; then
-    outFile=$defaultOutFile
-else
-    outFile=$2
-fi
+# Including configs
+my_dir="$(dirname "$0")"
+. "$my_dir/config.sh"
 
 entities=$(grep --exclude="*~" --include="$scannedFilesPattern" -RlP $entityAnnotation $1 )
 echo "@startuml" >> $outFile
