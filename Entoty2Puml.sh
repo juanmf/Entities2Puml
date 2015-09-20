@@ -1,15 +1,53 @@
 #!/bin/bash
+##
+# This script aims to generate a puml file describing your Doctrine data model. 
+# Then you just parse the directory where the output file is with plantuml.jar 
+# and it renders the Class Model for you.
+#
+# Usage:
+#
+# @param projectRoot/src A parent Directory where Entities reside might be as 
+#                        narrow as Bundle/Entity/ or as wide as project root.
+# @param outputFile.puml [Optional] the desired output filename for plantUml 
+#                        diagram source
+#
+# $0 projectRoot/src [outputFile.puml]
+##
 
+##
 # configs
+##
+##
+# Whether or not to include Class' attributes in diagram
+##
 includeAttrs=true
+
+##
+# The regex that is used by `grep -P` to identify Entity classes
+##
 entityAnnotation='\@[^\\(]+\\(Entity|MappedSuperclass)'
+
+##
+# Filename pattern to include in search its used by `grep --include=PATTERN`.
+##
 scannedFilesPattern="*.php"
+
+##
+# Filename extension to strip from filename, used for classname assumption.
+##
+scannedFilesExtension=".php"
+
+##
+# The defaul output filename in case second argument is not given
+##
+defaultOutFile="/tmp/tempUml.puml"
+
 # end configs
 
-rm /tmp/tempUml.puml
+rm $defaultOutFile
 
 if [ -z "$2" ]; then
-    outFile="/tmp/tempUml.puml"
+    outFile=$defaultOutFile
 else
     outFile=$2
 fi
@@ -22,7 +60,7 @@ echo "" >> $outFile
 echo "' Entities follows:" >> $outFile
 
 for i in $entities
-do echo class $(echo ${i/.php/} | xargs -I '{p}' basename '{p}') "{" >> $outFile
+do echo class $(echo ${i/$scannedFilesExtension/} | xargs -I '{p}' basename '{p}') "{" >> $outFile
     # Adding attributes if enabled by $includeAttrs
     if $includeAttrs ; then
         attrs=$(awk '/class/,/function\s+\w+\(/' $i  | grep -P "^\s+(private|public|protected)\s+\\$" | grep -oP '\$[^\s=;]*')
@@ -59,7 +97,7 @@ do
                 then
                     arrow=' "n" --o "n" '
                 fi
-                echo $(echo ${i/.php/} | xargs -I '{p}' basename '{p}') $arrow $relatedEntity >> $outFile
+                echo $(echo ${i/$scannedFilesExtension/} | xargs -I '{p}' basename '{p}') $arrow $relatedEntity >> $outFile
             done
 
         fi

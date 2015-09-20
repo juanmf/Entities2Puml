@@ -1,11 +1,11 @@
 # Entities2Puml
 This script aims to generate a puml file describing your Doctrine data model.
-Then you just parse the dorectory where the output file is with plantuml.jar and 
-it renders de Class Model for you.
+Then you just parse the directory where the output file is with plantuml.jar and 
+it renders the Class Model for you.
 
 Get PlantUml
 ============
-To download planuml visit http://plantuml.com/download.html and follow download link.
+To download plantuml visit http://plantuml.com/download.html and follow download link.
 
 Run script
 ==========
@@ -22,7 +22,7 @@ outFile.puml is optional, if you don't pass it the file tempUml.puml is generate
 
 Process script Output
 =====================
-You will need a JRE 
+You will need a JRE, you can donwload it at https://java.com/en/download/
 ```
 prompt $ java -jar /<path-to-downloaded plantuml jar>/plantuml.jar
 ```
