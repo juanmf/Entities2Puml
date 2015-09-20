@@ -1,0 +1,1150 @@
+@startuml
+
+' Entities follows:
+class Category {
+    $id
+    $title
+    $description
+    $slug
+    $lft
+    $rgt
+    $parent
+    $root
+    $level
+    $children
+    $created
+    $updated
+    $createdBy
+    $updatedBy
+    $translations
+}
+class CategoryTranslation {
+    $object
+}
+class Comment {
+}
+class RelatedArticle {
+    $id
+    $title
+    $content
+    $comments
+}
+class Comment {
+    $id
+    $subject
+    $message
+    $article
+}
+class Article {
+    $id
+    $title
+}
+class Category {
+    $id
+    $name
+    $products
+}
+class StockItem {
+    $id
+    $name
+    $sku
+    $quantity
+    $product
+    $productId
+}
+class Sluggable {
+    $id
+    $title
+    $code
+    $slug
+    $parent
+    $user
+}
+class ClosureTreeClosure {
+}
+class SoftDeleteable {
+    $id
+    $deletedAt
+}
+class SortableGroup {
+    $id
+    $name
+}
+class User {
+    $id
+    $name
+    $password
+}
+class BehavioralCategory {
+    $id
+    $title
+    $lft
+    $rgt
+    $parent
+    $children
+    $slug
+}
+class UserGroup {
+    $name
+}
+class BaseNode {
+    $children
+    $created
+    $identifier
+    $updated
+}
+class CategoryWithoutLevelClosure {
+}
+class CategoryClosure {
+}
+class Person {
+    $id
+    $fullName
+    $parent
+    $level
+}
+class Category {
+    $id
+    $title
+    $level
+    $parent
+}
+class PersonClosure {
+}
+class News {
+    $id
+    $title
+    $category
+}
+class CategoryWithoutLevel {
+    $id
+    $title
+    $parent
+}
+class User {
+    $username
+}
+class RootCategory {
+    $id
+    $title
+    $lft
+    $rgt
+    $parent
+    $root
+    $level
+    $children
+}
+class Person {
+    $id
+    $parent
+    $children
+    $lft
+    $rgt
+    $lvl
+    $name
+}
+class Man {
+}
+class Woman {
+}
+class CategoryUuid {
+    $id
+    $title
+    $lft
+    $rgt
+    $parentId
+    $level
+    $root
+    $children
+    $comments
+}
+class MPCategory {
+    $id
+    $path
+    $title
+    $parentId
+    $level
+    $children
+    $comments
+}
+class Category {
+    $id
+    $title
+    $lft
+    $rgt
+    $parentId
+    $level
+    $children
+    $comments
+}
+class Comment {
+    $id
+    $message
+    $article
+}
+class Bus {
+}
+class Car {
+    $parent
+    $children
+    $lft
+    $rgt
+    $root
+    $classLevel
+}
+class Vehicle {
+    $id
+    $engine
+    $title
+}
+class Engine {
+    $id
+    $type
+    $valves
+}
+class Article {
+    $id
+    $title
+    $comments
+    $category
+}
+class Node {
+    $title
+    $slug
+}
+class MPCategoryWithTrimmedSeparator {
+    $id
+    $path
+    $title
+    $parentId
+    $level
+    $children
+}
+class ANode {
+    $id
+    $lft
+    $rgt
+    $parent
+}
+class Role {
+    $id
+    $parent
+    $children
+    $lft
+    $rgt
+    $lvl
+    $role
+}
+class UserLDAP {
+}
+class MPFeaturesCategory {
+    $id
+    $path
+    $pathHash
+    $title
+    $parentId
+    $level
+    $children
+    $comments
+}
+class User {
+    $email
+    $passwordHash
+    $activationCode
+}
+class Author {
+    $id
+    $name
+    $paper
+    $position
+}
+class CustomerType {
+    $id
+    $name
+    $position
+    $customers
+}
+class Item {
+    $id
+    $name
+    $position
+    $category
+}
+class Customer {
+    $id
+    $name
+    $type
+}
+class Paper {
+    $id
+    $name
+    $authors
+}
+class Category {
+    $id
+    $name
+    $items
+}
+class Event {
+    $id
+    $dateTime
+    $name
+    $position
+}
+class Bus {
+}
+class Car {
+    $parent
+    $children
+}
+class Vehicle {
+    $id
+    $engine
+    $title
+    $sortByEngine
+}
+class Reservation {
+    $id
+    $bus
+    $destination
+    $travelDate
+    $seat
+    $name
+}
+class Engine {
+    $id
+    $type
+    $valves
+}
+class Node {
+    $id
+    $name
+    $path
+    $position
+}
+class SimpleListItem {
+    $id
+    $name
+    $position
+}
+class FileAppendNumber {
+    $id
+    $title
+    $filePath
+    $article
+}
+class FileWithoutPath {
+    $id
+    $filePath
+}
+class FileWithCustomFilenameGenerator {
+    $id
+    $filePath
+}
+class FileAppendNumberRelative {
+    $id
+    $title
+    $filePath
+    $article
+}
+class Image {
+    $id
+    $title
+    $filePath
+    $size
+    $mime
+    $useBasePath
+}
+class Article {
+    $id
+    $title
+    $files
+}
+class FileWithSha1Name {
+    $id
+    $filePath
+}
+class File {
+    $id
+    $title
+    $filePath
+    $article
+    $callbackWasCalled
+}
+class FileWithAllowedTypes {
+    $id
+    $title
+    $filePath
+    $fileSize
+    $article
+}
+class FileWithDisallowedTypes {
+    $id
+    $title
+    $filePath
+    $fileSize
+    $article
+}
+class FileWithAlphanumericName {
+    $id
+    $filePath
+}
+class FileWithMaxSize {
+    $id
+    $title
+    $filePath
+    $fileSize
+    $article
+    $callbackWasCalled
+}
+class UsingTrait {
+    $id
+    $title
+}
+class TitledArticle {
+    $id
+    $title
+    $text
+    $chtext
+    $chtitle
+}
+class Comment {
+    $id
+    $message
+    $article
+    $status
+    $closed
+    $modified
+}
+class Article {
+    $id
+    $title
+    $comments
+    $created
+    $updated
+    $published
+    $contentChanged
+    $type
+}
+class Type {
+    $id
+    $title
+    $articles
+}
+class WithoutInterface {
+    $id
+    $title
+    $created
+    $updated
+}
+class MappedSupperClass {
+    $id
+    $locale
+    $name
+    $createdFromIp
+}
+class SupperClassExtension {
+    $title
+}
+class Category {
+    $id
+    $title
+    $slug
+    $articles
+}
+class Article {
+    $id
+    $title
+    $category
+    $slug
+}
+class SportCar {
+}
+class Car {
+    $description
+    $title
+    $slug
+}
+class Vehicle {
+    $id
+}
+class Car {
+    $id
+    $description
+}
+class Vehicle {
+    $title
+    $slug
+}
+class Icarus {
+    $description
+    $slug
+}
+class Bus {
+    $id
+    $title
+}
+class Car {
+    $title
+    $description
+}
+class Vehicle {
+    $id
+    $title
+    $slug
+}
+class Prefix {
+    $id
+    $title
+    $slug
+}
+class PrefixWithTreeHandler {
+    $id
+    $title
+    $slug
+    $parent
+    $lft
+    $lvl
+    $rgt
+    $root
+}
+class Validate {
+    $id
+    $title
+    $slug
+}
+class Article {
+    $id
+    $code
+    $title
+    $slug
+}
+class SuffixWithTreeHandler {
+    $id
+    $title
+    $slug
+    $parent
+    $lft
+    $lvl
+    $rgt
+    $root
+}
+class Article {
+    $id
+    $title
+    $slug
+}
+class Category {
+    $id
+    $title
+    $slug
+    $articles
+}
+class Comment {
+    $id
+    $title
+    $post
+    $slug
+}
+class Article {
+    $id
+    $title
+    $category
+    $slug
+}
+class Post {
+    $title
+    $slug
+    $comments
+}
+class ConfigurationArticle {
+    $id
+    $title
+    $code
+    $slug
+}
+class Comment {
+    $id
+    $message
+    $article
+}
+class Article {
+    $id
+    $title
+    $code
+    $slug
+}
+class TreeSlug {
+    $id
+    $title
+    $slug
+    $parent
+    $lft
+    $rgt
+    $root
+    $level
+}
+class ArticleRelativeSlug {
+    $id
+    $title
+    $slug
+    $article
+}
+class Person {
+    $id
+    $name
+    $slug
+    $occupation
+}
+class Occupation {
+    $id
+    $title
+    $slug
+    $parent
+    $lft
+    $rgt
+    $root
+    $level
+}
+class TreeSlugPrefixSuffix {
+    $id
+    $title
+    $slug
+    $parent
+    $lft
+    $rgt
+    $root
+    $level
+}
+class Company {
+    $id
+    $title
+    $alias
+}
+class Article {
+    $id
+    $title
+    $code
+    $slug
+}
+class User {
+    $id
+    $username
+    $slug
+    $company
+}
+class Page {
+    $id
+    $content
+    $slug
+    $articles
+}
+class Car {
+    $description
+}
+class Vehicle {
+    $id
+    $title
+    $slug
+}
+class Position {
+    $id
+    $prop
+    $title
+    $code
+    $other
+    $slug
+}
+class Article {
+    $id
+    $title
+    $code
+    $slug
+    $deletedAt
+}
+class Suffix {
+    $id
+    $title
+    $slug
+}
+class TranslatableArticle {
+    $id
+    $title
+    $code
+    $slug
+    $comments
+    $page
+    $locale
+}
+class Identifier {
+    $id
+    $title
+}
+class TransArticleManySlug {
+    $id
+    $title
+    $uniqueTitle
+    $uniqueSlug
+    $code
+    $slug
+    $locale
+}
+class MegaPage {
+}
+class Child {
+    $title
+}
+class Module {
+    $id
+    $title
+    $deletedAt
+    $page
+}
+class Person {
+    $id
+    $name
+    $deletedAt
+    $address
+}
+class Comment {
+    $id
+    $comment
+    $deletedAt
+    $article
+}
+class Article {
+    $id
+    $title
+    $deletedAt
+    $comments
+}
+class Page {
+    $id
+    $title
+    $deletedAt
+    $modules
+}
+class OtherComment {
+    $id
+    $comment
+    $article
+}
+class OtherArticle {
+    $id
+    $title
+    $deletedAt
+    $comments
+}
+class MappedSuperclass {
+    $id
+    $deletedAt
+}
+class Address {
+    $id
+    $street
+    $deletedAt
+    $owner
+}
+class User {
+    $id
+    $username
+    $deletedAt
+}
+class UsingTrait {
+    $id
+    $title
+}
+class TitledArticle {
+    $id
+    $title
+    $text
+    $chtext
+    $chtitle
+}
+class Comment {
+    $id
+    $message
+    $article
+    $status
+    $closed
+    $modified
+}
+class Article {
+    $id
+    $title
+    $comments
+    $created
+    $updated
+    $published
+    $type
+}
+class Type {
+    $id
+    $title
+    $articles
+}
+class WithoutInterface {
+    $id
+    $title
+    $created
+    $updated
+}
+class MappedSupperClass {
+    $id
+    $locale
+    $name
+    $createdBy
+}
+class SupperClassExtension {
+    $title
+}
+class PersonCustomTranslation {
+    $translatable
+}
+class PersonTranslation {
+    $translatable
+}
+class Person {
+    $id
+    $name
+    $description
+    $lastName
+    $translations
+    $parent
+}
+class PersonCustom {
+    $id
+    $name
+    $description
+    $translations
+}
+class UsingTrait {
+    $id
+    $title
+}
+class TitledArticle {
+    $id
+    $title
+    $text
+    $state
+    $chtext
+    $chtitle
+    $closed
+}
+class Comment {
+    $id
+    $message
+    $article
+    $status
+    $closed
+    $modified
+}
+class Article {
+    $id
+    $title
+    $body
+    $comments
+    $created
+    $updated
+    $published
+    $contentChanged
+    $type
+}
+class Type {
+    $id
+    $title
+    $articles
+}
+class WithoutInterface {
+    $id
+    $title
+    $created
+    $updated
+}
+class MappedSupperClass {
+    $id
+    $locale
+    $name
+    $createdAt
+}
+class SupperClassExtension {
+    $title
+}
+class Article {
+    $id
+    $title
+}
+class Image {
+    $id
+    $title
+    $articles
+}
+class Article {
+    $id
+    $title
+    $images
+    $files
+}
+class File {
+    $id
+    $title
+}
+class Article {
+    $id
+    $title
+    $titleTest
+}
+class PersonTranslation {
+}
+class ArticleTemplate {
+    $title
+    $content
+    $locale
+}
+class Category {
+    $id
+    $title
+    $articles
+    $products
+}
+class Product {
+    $id
+    $title
+    $category
+}
+class Article {
+    $id
+    $title
+    $category
+}
+class Image {
+    $mime
+}
+class Person {
+    $id
+    $name
+}
+class Sport {
+    $id
+    $title
+    $description
+}
+class Comment {
+    $id
+    $subject
+    $message
+    $article
+    $locale
+}
+class Article {
+    $id
+    $title
+    $translations
+}
+class PersonalArticleTranslation {
+    $object
+}
+class Article {
+    $id
+    $title
+    $content
+    $views
+    $author
+    $locale
+    $comments
+}
+class File {
+    $id
+    $name
+    $size
+}
+class TemplatedArticle {
+    $id
+    $name
+}
+class MixedValue {
+    $id
+    $date
+    $cust
+}
+class Post {
+    $id
+    $publishedAt
+    $timestampAt
+    $dateAt
+    $boolean
+}
+class StringIdentifier {
+    $uid
+    $title
+    $locale
+}
+class Category {
+    $id
+    $title
+    $articles
+}
+class Article {
+    $id
+    $title
+    $category
+}
+class AbstractLogEntry {
+    $id
+    $action
+    $loggedAt
+    $objectId
+    $objectClass
+    $version
+    $data
+    $username
+}
+class AbstractLogEntry {
+    $id
+    $action
+    $loggedAt
+    $objectId
+    $objectClass
+    $version
+    $data
+    $username
+}
+class LogEntry {
+}
+class AbstractClosure {
+    $id
+    $ancestor
+    $descendant
+    $depth
+}
+class AbstractPersonalTranslation {
+    $id
+    $locale
+    $object
+    $field
+    $content
+}
+class AbstractTranslation {
+    $id
+    $locale
+    $objectClass
+    $field
+    $foreignKey
+    $content
+}
+class AbstractPersonalTranslation {
+    $id
+    $locale
+    $field
+    $object
+    $content
+}
+class AbstractTranslation {
+    $id
+    $locale
+    $objectClass
+    $field
+    $foreignKey
+    $content
+}
+class AssociationEntity {
+    $id
+    $single
+    $composite
+}
+class Item {
+    $id
+    $name
+    $position
+    $enabled
+    $createdAt
+    $updatedAt
+    $options
+}
+class Options {
+    $id
+    $label
+    $rank
+    $item
+}
+class Configuration {
+}
+class TestClass {
+}
+
+' Relations follows:
+Category "n" --* "1" Category
+CategoryTranslation "n" --* "1" Category
+Comment "n" --* "1" RelatedArticle
+Sluggable "n" --* "1" Sluggable
+Sluggable "n" --* "1" User
+BehavioralCategory "n" --* "1" BehavioralCategory
+Person "n" --* "1" Person
+Category "n" --* "1" Category
+News "1" --* "1" Category
+CategoryWithoutLevel "n" --* "1" CategoryWithoutLevel
+RootCategory "n" --* "1" RootCategory
+Person "n" --* "1" Person
+CategoryUuid "n" --* "1" CategoryUuid
+MPCategory "n" --* "1" MPCategory
+Category "n" --* "1" Category
+Comment "n" --* "1" Article
+Car "n" --* "1" Car
+Vehicle "1" --* "1" Engine
+Article "n" --* "1" Category
+MPCategoryWithTrimmedSeparator "n" --* "1" MPCategoryWithTrimmedSeparator
+ANode "n" --* "1" BaseNode
+Role "n" --* "1" UserGroup
+MPFeaturesCategory "n" --* "1" MPFeaturesCategory
+Author "n" --* "1" Paper
+Item "n" --* "1" Category
+Customer "n" --* "1" CustomerType
+Car "n" --* "1" Car
+Vehicle "n" --* "1" Engine
+Reservation "n" --* "1" Bus
+FileAppendNumber "n" --* "1" Article
+FileAppendNumberRelative "n" --* "1" Article
+File "n" --* "1" Article
+FileWithAllowedTypes "n" --* "1" Article
+FileWithDisallowedTypes "n" --* "1" Article
+FileWithMaxSize "n" --* "1" Article
+Comment "n" --* "1" Article
+Article "n" --* "1" Type
+Article "n" --* "1" Category
+PrefixWithTreeHandler "n" --* "1" PrefixWithTreeHandler
+SuffixWithTreeHandler "n" --* "1" SuffixWithTreeHandler
+Comment "n" --* "1" Post
+Article "n" --* "1" Category
+Comment "n" --* "1" TranslatableArticle
+TreeSlug "n" --* "1" TreeSlug
+ArticleRelativeSlug "n" --* "1" Article
+Person "n" --* "1" Occupation
+Occupation "n" --* "1" Occupation
+TreeSlugPrefixSuffix "n" --* "1" TreeSlugPrefixSuffix
+User "n" --* "1" Company
+TranslatableArticle "n" --* "1" Page
+Module "n" --* "1" Page
+Person "1" --* "1" Address
+Comment "n" --* "1" Article
+OtherComment "n" --* "1" OtherArticle
+Address "1" --* "1" Person
+Comment "n" --* "1" Article
+Article "n" --* "1" Type
+PersonCustomTranslation "n" --* "1" PersonCustom
+PersonTranslation "n" --* "1" Person
+Person "n" --* "1" Person
+Comment "n" --* "1" Article
+Article "n" --* "1" Type
+Image "n" --o "n" Article
+Article "n" --o "n" Image
+Article "n" --o "n" File
+Product "n" --* "1" Category
+Article "n" --* "1" Category
+Comment "n" --* "1" Article
+PersonalArticleTranslation "n" --* "1" Article
+Article "n" --* "1" Category
+AssociationEntity "n" --* "1" SingleIntIdEntity
+AssociationEntity "n" --* "1" CompositeIntIdEntity
+Options "n" --* "1" Item
+@enduml
+
