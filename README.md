@@ -1,5 +1,6 @@
 # Entities2Puml
-This script aims to generate a puml file describing your Doctrine data model.
+This scripts aim to generate a puml file describing your Doctrine data model 
+or your MySQL database.
 Then you just parse the directory where the output file is with plantuml.jar and 
 it renders the Class Model for you.
 
@@ -9,13 +10,26 @@ To download plantuml visit http://plantuml.com/download.html and follow download
 
 Run script
 ==========
+**For Doctrine**
 Go to a terminal
 ```
-prompt $ Entities2Puml.sh /path/to/BundleWithEntitiesDirectory/Entity [outFile.puml]
+prompt $ Entity2Puml.sh /path/to/BundleWithEntitiesDirectory/Entity [outFile.puml]
 ```
 Or if you want to parse all Entities in the project
 ```
-prompt $ Entities2Puml.sh /path/to/ProjectRootDirectory/ [outFile.puml]
+prompt $ Entity2Puml.sh /path/to/ProjectRootDirectory/ [outFile.puml]
+```
+outFile.puml is optional, if you don't pass it the file tempUml.puml is generated and 
+(with or without 2nd argimen) it's printed on screen.
+
+**For MySQL**
+Go to a terminal
+```
+prompt $ MySqlSchema2Puml.sh /path/to/BundleWithEntitiesDirectory/Entity [outFile.puml]
+```
+Or if you want to parse all Entities in the project
+```
+prompt $ MySqlSchema2Puml.sh <dataBase Name> [outFile.puml]
 ```
 outFile.puml is optional, if you don't pass it the file tempUml.puml is generated and 
 (with or without 2nd argimen) it's printed on screen.
