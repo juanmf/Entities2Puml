@@ -25,7 +25,7 @@ outFile.puml is optional, if you don't pass it the file tempUml.puml is generate
 **For MySQL**
 Go to a terminal
 ```
-prompt $ MySqlSchema2Puml.sh /path/to/BundleWithEntitiesDirectory/Entity [outFile.puml]
+prompt $ MySqlSchema2Puml.sh <dataBase Name> [outFile.puml]
 ```
 Or if you want to parse all Entities in the project
 ```
