@@ -23,7 +23,8 @@ outFile.puml is optional, if you don't pass it the file tempUml.puml is generate
 (with or without 2nd argimen) it's printed on screen.
 
 **For MySQL**
-Go to a terminal
+1st make sure your config_mysql.sh has the right values for user, host and so on. 
+Go to a terminal.
 ```
 prompt $ MySqlSchema2Puml.sh <dataBase Name> [outFile.puml]
 ```
