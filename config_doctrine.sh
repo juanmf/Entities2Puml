@@ -10,7 +10,7 @@ includeAttrs=false
 ##
 # The regex that is used by `grep -P` to identify Entity classes
 ##
-entityAnnotation='\@[^\\(]+\\(Entity|MappedSuperclass)'
+entityAnnotation='\@[^\(]+(Entity|MappedSuperclass)'
 
 ##
 # Filename pattern to include in search its used by `grep --include=PATTERN`.

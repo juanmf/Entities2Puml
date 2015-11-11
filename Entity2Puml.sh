@@ -17,8 +17,11 @@
 # Including configs
 my_dir="$(dirname "$0")"
 . "$my_dir/config.sh"
+. "$my_dir/config_doctrine.sh"
 
 entities=$(grep --exclude="*~" --include="$scannedFilesPattern" -RlP $entityAnnotation $1 )
+echo grep --exclude="*~" --include="$scannedFilesPattern" -RlP "$entityAnnotation" $1
+
 echo "@startuml
 hide methods
                 " >> $outFile
